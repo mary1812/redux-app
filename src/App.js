@@ -16,7 +16,7 @@ function App(props) {
     const action = {
       type: 'decrement' 
     }
-    
+
     dispatch(action)
   }
   return (
@@ -34,8 +34,8 @@ function mapStateToProps(state) {
   };
 }
 
-const withProps = connect(mapStateToProps);
+// const withProps = connect(mapStateToProps);
 
-const AppWithProps = withProps(App); //паттерн компонента высшего порядка
+// const AppWithProps = withProps(App); //паттерн компонента высшего порядка
 
-export default AppWithProps;
+export default connect(mapStateToProps)(App); //Каррирование
