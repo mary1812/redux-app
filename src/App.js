@@ -1,41 +1,45 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
+import * as actionCreators from "./actions"
 
 function App(props) {
   console.log(props);
-  const { count, dispatch} = props;
+  const { count, step, dispatch } = props;
 
   const increment = () => {
-    const action = {
-      type: 'increment' 
-    }
+    const action = actionCreators.increment()
 
-    dispatch(action)
-  }
+    dispatch(action);
+  };
 
   const decrement = () => {
     const action = {
-      type: 'decrement' 
-    }
+      type: "decrement",
+    };
 
-    dispatch(action)
-  }
+    dispatch(action);
+  };
+
+  const changeStep = ({target : {value}}) => {
+    const action = actionCreators.setStep(Number(value))
+    
+        dispatch(action);
+  };
+  
+  };
+
   return (
     <div>
       <h1>Counter is: {count} </h1>
+      <input onChange={changeStep} value={step} />
       <button onClick={increment}> + </button>
       <button onClick={decrement}> - </button>
     </div>
   );
-}
 
 function mapStateToProps(state) {
   return {
-    count: state.count
+    count: state.count,
   };
 }
-
-// const withProps = connect(mapStateToProps);
-
-// const AppWithProps = withProps(App); //паттерн компонента высшего порядка
 
 export default connect(mapStateToProps)(App); //Каррирование

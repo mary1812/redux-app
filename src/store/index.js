@@ -1,0 +1,2 @@
+
+const allstore = createStore(reducer);

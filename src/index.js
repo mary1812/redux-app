@@ -4,33 +4,7 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import "./index.css";
 import App from "./App";
-
-const initialState = {
-  count: 0,
-  test: true,
-};
-
-function reducer(state = initialState, action) {
-  switch (action.type) {
-    case "increment": {
-      const newState = {
-        count: state.count + 1,
-      };
-      return newState;
-    }
-    case "decrement": {
-      const newState = {
-        count: state.count - 1,
-      };
-      return newState;
-    }
-      
-    default:
-      return state;
-  }
-}
-
-const allstore = createStore(reducer);
+import store from "./store/index"
 
 ReactDOM.render(
   <React.StrictMode>
@@ -44,11 +18,12 @@ ReactDOM.render(
 /*REDUX
 store - хранилище всех общих состояний приложения, объект JS
 reducer - функция, прнимающая состояние и действие и возвращающая новое состояние
-action - 
+action - объект, в котором есть свойство type, и может быть доп инфа
 
 */
 
 /*REACT-REDUX
 Provider - компонент провайдер как в контексте
-connect - функция 
+connect - функция для подписки компонента на обновления хранилища
+mapStateToProps - 
 */
