@@ -1,53 +1,41 @@
-import { useReducer } from 'react';
+import { connect } from 'react-redux';
 
-const initialState = {
-  count: 0
-}
-function reducer(state, action) {
-  switch (action.type) {
-    case 'increment': {
-      const newState = {
-        ...state,
-        count: state.count +1 
-      }
-      return newState;
-    }
-    case 'decrement': {
-      const newState = {
-        ...state,
-        count: state.count -1 
-      }
-      return newState;
-}
-    default: return state;
-  }
-}
-
-function App() {
-  const [state, dispatch] = useReducer(reducer, initialState)
+function App(props) {
+  console.log(props);
+  const { count, dispatch} = props;
 
   const increment = () => {
     const action = {
       type: 'increment' 
     }
 
-    dispatch(action);
+    dispatch(action)
   }
 
   const decrement = () => {
     const action = {
       type: 'decrement' 
     }
-
-    dispatch(action);
+    
+    dispatch(action)
   }
   return (
     <div>
-      <h1>Counter is: {state.count}</h1>
+      <h1>Counter is: {count} </h1>
       <button onClick={increment}> + </button>
       <button onClick={decrement}> - </button>
     </div>
   );
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    count: state.count
+  };
+}
+
+const withProps = connect(mapStateToProps);
+
+const AppWithProps = withProps(App); //паттерн компонента высшего порядка
+
+export default AppWithProps;
