@@ -4,11 +4,11 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import "./index.css";
 import App from "./App";
-import allstore from "./store/index"
+import store from "./store/index"
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={allstore}>
+    <Provider store={store}>
       <App />
     </Provider>
   </React.StrictMode>,
