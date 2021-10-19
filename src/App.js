@@ -12,9 +12,7 @@ function App(props) {
   };
 
   const decrement = () => {
-    const action = {
-      type: "decrement",
-    };
+    const action = actionCreators.decrement()
 
     dispatch(action);
   };
@@ -24,9 +22,6 @@ function App(props) {
     
         dispatch(action);
   };
-  
-  };
-
   return (
     <div>
       <h1>Counter is: {count} </h1>
@@ -35,11 +30,11 @@ function App(props) {
       <button onClick={decrement}> - </button>
     </div>
   );
+  };
+  
 
 function mapStateToProps(state) {
-  return {
-    count: state.count,
-  };
+  return state;
 }
 
 export default connect(mapStateToProps)(App); //Каррирование
