@@ -1,40 +1,13 @@
-import { connect } from "react-redux";
-import * as actionCreators from "./actions"
+import React from 'react';
+import Counter from './components /Counter';
 
-function App(props) {
-  console.log(props);
-  const { count, step, dispatch } = props;
-
-  const increment = () => {
-    const action = actionCreators.increment()
-
-    dispatch(action);
-  };
-
-  const decrement = () => {
-    const action = actionCreators.decrement()
-
-    dispatch(action);
-  };
-
-  const changeStep = ({target : {value}}) => {
-    const action = actionCreators.setStep(Number(value))
-    
-        dispatch(action);
-  };
+const App = () => {
   return (
     <div>
-      <h1>Counter is: {count} </h1>
-      <input onChange={changeStep} value={step} />
-      <button onClick={increment}> + </button>
-      <button onClick={decrement}> - </button>
+      <Counter/>
     </div>
   );
-  };
-  
-
-function mapStateToProps(state) {
-  return state;
 }
 
-export default connect(mapStateToProps)(App); //Каррирование
+export default App;
+

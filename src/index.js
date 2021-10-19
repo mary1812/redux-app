@@ -4,6 +4,7 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import "./index.css";
 import App from "./App";
+import Counter from "./components /Counter";
 import store from "./store/index"
 
 ReactDOM.render(
@@ -19,7 +20,7 @@ ReactDOM.render(
 store - хранилище всех общих состояний приложения, объект JS
 reducer - функция, прнимающая состояние и действие и возвращающая новое состояние
 action - объект, в котором есть свойство type, и может быть доп инфа
-
+dispatch - 
 */
 
 /*REACT-REDUX
